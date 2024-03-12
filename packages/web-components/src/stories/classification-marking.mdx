@@ -1,0 +1,88 @@
+import { html, render } from 'lit-html'
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks'
+import { extractArgTypes } from '@astrouxds/storybook-addon-docs-stencil'
+import * as ClassificationMarkingStories from './classification-marking.stories';
+
+<Meta of={ClassificationMarkingStories} />
+
+# Classification Marking
+
+Classification and Control Markings are required for digital products created for government clients who interact with classified or controlled information.
+
+For the most up-to-date policies, see the [ISOO Training Aids](https://www.archives.gov/isoo/training/training-aids) for classification marking policies and the [CUI Registry](https://www.archives.gov/cui) for control marking policies. In addition to these requirements, each government agency may have their own rules to use for Classification and Control Markings.
+
+> NOTE: 'CUI' and 'Controlled' markings are semantically the same. It is up to your organization's preference to decide which one to use.
+
+## Guidelines
+
+* [Astro UXDS: Classification Markings](https://astrouxds.com/components/classification-markings/)
+
+<Canvas>
+  <Story of={ClassificationMarkingStories.Default_} />
+</Canvas>
+
+## API
+
+<Controls />
+
+## Typescript Types
+
+```
+import { Classification } from '@astrouxds/astro-web-components'
+```
+
+**Classification**
+
+```
+ type Classification =
+    | 'cui'
+    | 'controlled'
+    | 'confidential'
+    | 'secret'
+    | 'top-secret'
+    | 'top-secret-sci'
+    | 'unclassified'
+```
+
+## Variants
+
+### With Label
+
+Applying the `label` property attribute to the Classification Custom Element adds `label` text value to the marking in addition to its classification text.
+
+<Canvas>
+  <Story of={ClassificationMarkingStories.WithLabel_} />
+</Canvas>
+
+### With Footer Banner
+
+When using the Classification Marking component as a wrapper with slotted children, setting the `footerBanner` property attribute to the Classification Custom Element adds a duplicate of the Classification Banner to the bottom of parent element.
+
+<Canvas>
+  <Story of={ClassificationMarkingStories.WithFooterBanner_} />
+</Canvas>
+
+### All Banner Variants
+
+<Canvas>
+  <Story of={ClassificationMarkingStories.AllBannerVariants_} />
+</Canvas>
+
+### All Tag Variants
+
+By default Classification Markings are rendered in banner format. Applying the `tag` property attribute sets the marking type. The `tag` attribute property defines the Classification Marking as a Tag.
+
+> NOTE: The 'Controlled' marking will always display as 'CUI' when using the Tag property.
+
+<Canvas>
+  <Story of={ClassificationMarkingStories.AllTagVariants_} />
+</Canvas>
+
+## Cherry Picking
+
+If you're already utilizing a build system that supports tree shaking and want to only import this individual component:
+
+```js
+import { RuxClassificationMarking } from '@astrouxds/astro-web-components/dist/components/rux-classification-marking'
+customElements.define('rux-classification-marking', RuxClassificationMarking)
+```

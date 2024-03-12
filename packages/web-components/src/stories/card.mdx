@@ -1,0 +1,47 @@
+import { extractArgTypes } from '@astrouxds/storybook-addon-docs-stencil'
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks'
+import { html, render } from 'lit-html'
+import * as CardStories from './card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+By default, Cards have a default padding of 8px set on the body. If you'd like to change this (for example, using tables or a list inside your Card), you can use the `--body-padding` CSS custom property for convenience or the `body` CSS shadow part.
+
+<Canvas>
+  <Story of={CardStories.Default_} />
+</Canvas>
+
+## API
+
+<Controls />
+
+## Variants
+
+### With Header
+
+<Canvas>
+  <Story of={CardStories.WithHeader_} />
+</Canvas>
+
+### With Footer
+
+<Canvas>
+  <Story of={CardStories.WithFooter_} />
+</Canvas>
+
+### Full Example
+
+<Canvas>
+  <Story of={CardStories.FullExample_} />
+</Canvas>
+
+## Cherry Picking
+
+If you're already utilizing a build system that supports tree shaking and want to only import this individual component:
+
+```js
+import { RuxCard } from '@astrouxds/astro-web-components/dist/components/rux-card'
+customElements.define('rux-card', RuxCard)
+```
